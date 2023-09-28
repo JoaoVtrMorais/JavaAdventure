@@ -1,4 +1,4 @@
-package JavaCoffeShop;
+package main;
 
 import javax.swing.*;
 
