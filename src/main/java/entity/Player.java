@@ -75,10 +75,13 @@ public class Player extends Entity {
                 }
                 spriteCounter = 0;
             }
-
         }
-
-
+    }
+    
+    public void pickUpObject(int i) {
+        if(i !=999) {
+            
+        }
     }
 
     public void draw(Graphics2D g2) {

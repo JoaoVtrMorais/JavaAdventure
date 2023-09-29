@@ -4,31 +4,37 @@ import entity.Player;
 
 import javax.swing.*;
 import java.awt.*;
+import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    // Configurações da tela
-
+    // CONFIGURAÇÕES DA TELA
     final int originalTileSize = 32; // 16x16 tile
     final int scale = 3;
 
     public final int tileSize = originalTileSize * scale; //48x48 tile
-    final int maxScreenCol = 16;
-    final int MaxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenCol; // 768 pixels
-    final int screenHeight = tileSize* MaxScreenRow; // 576 pixels
+    public final int maxScreenCol = 10;
+    public final int MaxScreenRow = 7;
+    public final int screenWidth = tileSize * maxScreenCol; // 768 pixels
+    public final int screenHeight = tileSize* MaxScreenRow; // 576 pixels
 
     int FPS = 60;
-
-    KeyHandler keyH = new KeyHandler();
+    
+    // SISTEMA
+    TileManager tileM = new TileManager(this);
+    KeyHandler keyH = new KeyHandler(this);
+    public AssetSetter aSetter = new AssetSetter(this);
+    public UI ui = new UI(this);
     Thread gameThread;
+    
+    // ESTADO DO JOGO
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+    
+    // ENTIDADE E OBJETO
     Player player = new Player(this, keyH);
-
-    // Determina a posicão padrão do jogador
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 4;
-
+    
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -37,47 +43,16 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyH);
         this.setFocusable(true);
     }
+    
+    public void setupGame() {
+        gameState = playState;
+    }
 
     public void startGameThread() {
 
         gameThread = new Thread(this);
         gameThread.start();
     }
-
-//    @Override
-//    public void run() {
-//
-//        double drawInterval = 1000000000 / FPS; // 0.01666 seconds
-//        double nextDrawTime = System.nanoTime() + drawInterval;
-//
-//        while(gameThread != null) {
-//
-//        long currentTime = System.nanoTime();
-//
-//            // 1. Atualizar: atualizar informações como a posição do personagem.
-//            update();
-//
-//            // 2. Desenhar: desenhar a tela com informação atualizada
-//            repaint();
-//
-//            try {
-//                double remainingTime = nextDrawTime - System.nanoTime();
-//                remainingTime = remainingTime / 1000000;
-//
-//                if (remainingTime < 0) {
-//                    remainingTime = 0;
-//                }
-//
-//                Thread.sleep((long)remainingTime);
-//
-//                nextDrawTime += drawInterval;
-//
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//
-//    }
 
     public void run() {
         double drawInterval = 1000000000 / FPS;
@@ -112,7 +87,14 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        player.update();
+        
+        if (gameState == playState) {
+            player.update();
+        }
+        if (gameState == pauseState) {
+            
+        }
+        
     }
 
     public void paintComponent(Graphics g) {
@@ -120,9 +102,15 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
-
+        
+        // TILE
+        tileM.draw(g2);
+        
+        // PLAYER
         player.draw(g2);
-
+        
+        //UI
+        ui.draw(g2);
         g2.dispose();
     }
 }
