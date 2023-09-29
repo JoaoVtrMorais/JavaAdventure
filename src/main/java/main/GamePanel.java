@@ -9,15 +9,22 @@ import tile.TileManager;
 public class GamePanel extends JPanel implements Runnable {
 
     // CONFIGURAÇÕES DA TELA
-    final int originalTileSize = 32; // 16x16 tile
+    public final int originalTileSize = 32; // 16x16 tile
     final int scale = 3;
 
-    public final int tileSize = originalTileSize * scale; //48x48 tile
+    public final int tileSize = originalTileSize * scale;
     public final int maxScreenCol = 10;
-    public final int MaxScreenRow = 7;
-    public final int screenWidth = tileSize * maxScreenCol; // 768 pixels
-    public final int screenHeight = tileSize* MaxScreenRow; // 576 pixels
+    public final int maxScreenRow = 7;
+    public final int screenWidth = tileSize * maxScreenCol;
+    public final int screenHeight = tileSize* maxScreenRow;
 
+    // CONFIGURAÇÕES DO MUNDO
+    public final int maxWorldCol = 20;
+    public final int maxWorldRow = 20;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
+
+    // FPS
     int FPS = 60;
     
     // SISTEMA
@@ -33,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     
     // ENTIDADE E OBJETO
-    Player player = new Player(this, keyH);
+    public Player player = new Player(this, keyH);
     
     public GamePanel() {
 
