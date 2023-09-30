@@ -17,8 +17,6 @@ public class UI {
     
     public void draw(Graphics2D g2) {
         
-        this.g2 = g2;
-        
         if (gp.gameState == gp.playState) {
             
         }
@@ -28,7 +26,7 @@ public class UI {
     }
     public void drawPauseScreen() {
         
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80F));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80));
         String text = "PAUSED";
         int x = getXforCenteredText(text);
         int y = gp.screenHeight / 2;

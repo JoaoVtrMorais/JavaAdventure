@@ -21,10 +21,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize* maxScreenRow;
 
     // CONFIGURAÇÕES DO MUNDO
-    public final int maxWorldCol = 20;
-    public final int maxWorldRow = 20;
-    public final int worldWidth = tileSize * maxWorldCol;
-    public final int worldHeight = tileSize * maxWorldRow;
+    public final int maxWorldCol = 10;
+    public final int maxWorldRow = 7;
 
     // FPS
     int FPS = 60;
@@ -32,10 +30,12 @@ public class GamePanel extends JPanel implements Runnable {
     // SISTEMA
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler(this);
+    Sound music = new Sound();
+    Sound se = new Sound();
     public UI ui = new UI(this);
-    Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
+    Thread gameThread;
     
     // ESTADO DO JOGO
     public int gameState;
@@ -59,6 +59,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         aSetter.setObject();
         gameState = playState;
+
+        //playMusic(0);
     }
 
     public void startGameThread() {
@@ -113,7 +115,14 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-        
+
+        // DEBUG
+        long drawStart = 0;
+        if(keyH.checkDrawTime == true) {
+            drawStart = System.nanoTime();
+        }
+
+
         // TILE
         tileM.draw(g2);
 
@@ -130,5 +139,32 @@ public class GamePanel extends JPanel implements Runnable {
         //UI
         ui.draw(g2);
         g2.dispose();
+
+        // DEBUG
+        if (keyH.checkDrawTime == true) {
+            long drawEnd = System.nanoTime();
+            long passed = drawEnd - drawStart;
+            g2.setColor(Color.white);
+            g2.drawString("Draw Time: " + passed, 10, 400);
+            System.out.println("Draw Time: " + passed);
+        }
+    }
+
+    public void playMusic(int i) {
+
+        music.setFile(i);
+        music.play();
+        music.loop();
+    }
+
+    public void stopMusic() {
+
+        music.stop();
+    }
+
+    public void playerSE(int i) {
+
+        se.setFile(i);
+        //se.play();
     }
 }

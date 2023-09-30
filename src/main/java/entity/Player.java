@@ -2,6 +2,7 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,6 +15,7 @@ public class Player extends Entity {
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
+    int hasMoney = 0;
 
     public Player (GamePanel gp, KeyHandler keyH) {
 
@@ -26,8 +28,10 @@ public class Player extends Entity {
         solidArea = new Rectangle();
         solidArea.x = 0;
         solidArea.y = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 32;
-        solidArea.height = 48;
+        solidArea.height = 32;
 
         setDefaultValues();
         getPlayerImage();
@@ -43,20 +47,29 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
 
+        up1 = setup("CharacterUp_1");
+        up2 = setup("CharacterUp_2");
+        down1 = setup("CharacterDown_1");
+        down2 = setup("CharacterDown_2");
+        left1 = setup("CharacterLeft_1");
+        left2 = setup("CharacterLeft_2");
+        right1 = setup("CharacterRight_1");
+        right2 = setup("CharacterRight_2");
+
+    }
+
+    public BufferedImage setup(String imageName) {
+
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage image = null;
+
         try {
-
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/CharacterUp_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/CharacterUp_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/CharacterDown_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/CharacterDown_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/CharacterLeft_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/CharacterLeft_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/CharacterRight_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/CharacterRight_2.png"));
-
+            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
+            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return image;
     }
 
     public void update() {
@@ -78,6 +91,10 @@ public class Player extends Entity {
             // VERIFICA COLISÃO
             collisionOn = false;
             gp.cChecker.checkTile(this);
+
+            // VERIFICA COLISÃO COM OBJETO
+            int objIndex = gp.cChecker.checkObject(this, true) ;
+            pickUpObject(objIndex);
 
             // SE COLISÃO É FALSA, O JOGADOR PODE SE MOVER
             if (collisionOn == false) {
@@ -103,8 +120,31 @@ public class Player extends Entity {
     }
     
     public void pickUpObject(int i) {
-        if(i !=999) {
-            
+        if(i != 999) {
+
+            String objectName = gp.obj[i].name;
+
+            switch (objectName) {
+                case "Moeda":
+                    gp.playerSE(1);
+                    hasMoney += 10;
+                    gp.obj[i] = null;
+                    System.out.println("Money: " + hasMoney);
+                    break;
+                case "Door":
+                    if (hasMoney > 5) {
+                        gp.playerSE(3);
+                        gp.obj[i] = null;
+                        hasMoney -= 5;
+                    }
+                    System.out.println("Money: " + hasMoney);
+                    break;
+                case "Boots":
+                    gp.playerSE(2);
+                    speed += 1;
+                    gp.obj[i] = null;
+                    break;
+            }
         }
     }
 
@@ -149,7 +189,7 @@ public class Player extends Entity {
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, null);
 
     }
 }
