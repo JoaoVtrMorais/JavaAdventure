@@ -15,7 +15,6 @@ public class Player extends Entity {
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    int hasMoney = 0;
 
     public Player (GamePanel gp, KeyHandler keyH) {
 
@@ -122,29 +121,6 @@ public class Player extends Entity {
     public void pickUpObject(int i) {
         if(i != 999) {
 
-            String objectName = gp.obj[i].name;
-
-            switch (objectName) {
-                case "Moeda":
-                    gp.playerSE(1);
-                    hasMoney += 10;
-                    gp.obj[i] = null;
-                    System.out.println("Money: " + hasMoney);
-                    break;
-                case "Door":
-                    if (hasMoney > 5) {
-                        gp.playerSE(3);
-                        gp.obj[i] = null;
-                        hasMoney -= 5;
-                    }
-                    System.out.println("Money: " + hasMoney);
-                    break;
-                case "Boots":
-                    gp.playerSE(2);
-                    speed += 1;
-                    gp.obj[i] = null;
-                    break;
-            }
         }
     }
 
