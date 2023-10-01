@@ -11,14 +11,14 @@ import java.io.IOException;
 
 public class Player extends Entity {
 
-    GamePanel gp;
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
 
     public Player (GamePanel gp, KeyHandler keyH) {
 
-        this.gp = gp;
+        super(gp);
+
         this.keyH = keyH;
 
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
@@ -46,29 +46,15 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
 
-        up1 = setup("CharacterUp_1");
-        up2 = setup("CharacterUp_2");
-        down1 = setup("CharacterDown_1");
-        down2 = setup("CharacterDown_2");
-        left1 = setup("CharacterLeft_1");
-        left2 = setup("CharacterLeft_2");
-        right1 = setup("CharacterRight_1");
-        right2 = setup("CharacterRight_2");
+        up1 = setup("/player/CharacterUp_1");
+        up2 = setup("/player/CharacterUp_2");
+        down1 = setup("/player/CharacterDown_1");
+        down2 = setup("/player/CharacterDown_2");
+        left1 = setup("/player/CharacterLeft_1");
+        left2 = setup("/player/CharacterLeft_2");
+        right1 = setup("/player/CharacterRight_1");
+        right2 = setup("/player/CharacterRight_2");
 
-    }
-
-    public BufferedImage setup(String imageName) {
-
-        UtilityTool uTool = new UtilityTool();
-        BufferedImage image = null;
-
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
-            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
     }
 
     public void update() {
@@ -94,6 +80,10 @@ public class Player extends Entity {
             // VERIFICA COLISÃO COM OBJETO
             int objIndex = gp.cChecker.checkObject(this, true) ;
             pickUpObject(objIndex);
+
+            // VERIFICA COLISÃO COM NPC
+            int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
+            interactNPC(npcIndex);
 
             // SE COLISÃO É FALSA, O JOGADOR PODE SE MOVER
             if (collisionOn == false) {
@@ -121,6 +111,12 @@ public class Player extends Entity {
     public void pickUpObject(int i) {
         if(i != 999) {
 
+        }
+    }
+
+    public void interactNPC(int i) {
+        if(i != 999) {
+            System.out.println("Você está colidindo com um npc!");
         }
     }
 
