@@ -31,6 +31,7 @@ public class TileManager {
 
             setup(0, "Grass1_Tile", false);
             setup(1, "WoodFloor_Tile", false);
+            setup(2, "Balcony1_Tile", true);
 
     }
 
