@@ -24,7 +24,7 @@ public class TileManager {
         tile = new Tile[10];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("/maps/map02.txt");
+        loadMap("/maps/map01.txt");
     }
     
     public void getTileImage() {
@@ -32,6 +32,7 @@ public class TileManager {
             setup(0, "Grass1_Tile", false);
             setup(1, "WoodFloor_Tile", false);
             setup(2, "Balcony1_Tile", true);
+            setup(3, "Wall1_Tile", true);
 
     }
 
