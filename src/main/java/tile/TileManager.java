@@ -29,10 +29,11 @@ public class TileManager {
     
     public void getTileImage() {
 
-            setup(0, "Grass1_Tile", false);
-            setup(1, "WoodFloor_Tile", false);
-            setup(2, "Balcony1_Tile", true);
-            setup(3, "Wall1_Tile", true);
+            setup(0, "Floor1_Tile", false);
+            setup(1, "FloorEdge1_Tile", true);
+            setup(2, "FloorEdge2_Tile", true);
+            setup(3, "FloorEdge1_Tile", true);
+            setup(4, "Balcony1_Tile", true);
 
     }
 
