@@ -12,7 +12,7 @@ import tile.TileManager;
 public class GamePanel extends JPanel implements Runnable {
 
     // CONFIGURAÇÕES DA TELA
-    final int originalTileSize = 32; // 16x16 tile
+    final int originalTileSize = 16; // 16x16 tile
     final int scale = 3;
 
     public final int tileSize = originalTileSize * scale;
@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     
     // SISTEMA
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler(this);
+    public KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();
     public UI ui = new UI(this);
@@ -43,7 +43,9 @@ public class GamePanel extends JPanel implements Runnable {
     public final int  titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
-    
+    public final int dialogueState = 3;
+    public final int optionsState = 5;
+
     // ENTIDADE E OBJETO
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];

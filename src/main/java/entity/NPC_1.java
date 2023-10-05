@@ -13,6 +13,7 @@ public class NPC_1 extends Entity {
         speed = 1;
 
         getImage();
+        setDialogue();
     }
 
     public void getImage() {
@@ -25,6 +26,13 @@ public class NPC_1 extends Entity {
         left2 = setup("/player/CharacterLeft_2");
         right1 = setup("/player/CharacterRight_1");
         right2 = setup("/player/CharacterRight_2");
+    }
+
+    public void setDialogue() {
+        dialogues[0] = "Olá, mundo";
+        dialogues[1] = "Olá, humano.\nÉ um prazer conhece-lo!";
+        dialogues[2] = "Saiba que não há cordões em mim.";
+        dialogues[3] = "Eu fugiria se fosse você.";
     }
 
     public void setAction() {
@@ -43,7 +51,11 @@ public class NPC_1 extends Entity {
             actionLockCounter = 0;
         }
 
+    }
 
+    public void speak() {
+
+        super.speak();
 
     }
 }

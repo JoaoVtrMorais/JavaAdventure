@@ -9,20 +9,23 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font maruMonica;
+    public boolean messageOn = false;
+    public String message = "";
+    int messageCounter = 0;
+    public boolean gameFinished = false;
     public int commandNum = 0;
     public int titleScreenState = 0; // 0: primeira tela, 1: segunda tela
 
     public UI(GamePanel gp) {
         this.gp = gp;
-
-            try {
-                InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
-                maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
-            } catch (FontFormatException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
+            maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public void draw(Graphics2D g2) {
@@ -43,7 +46,12 @@ public class UI {
         // PAUSE STATE
         if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
-        }   
+        }
+        // DIALOGUE STATE
+        if (gp.gameState == gp.dialogueState) {
+            drawDialogueScreen();
+        }
+
     }
 
     public void drawTitleScreen() {
@@ -152,6 +160,41 @@ public class UI {
         
         g2.drawString(text, x, y);
     }
+
+    public void drawDialogueScreen() {
+
+        // WINDOW
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize / 2;
+        int width = gp.screenWidth - (gp.tileSize * 4);
+        int height = gp.tileSize * 4;
+
+        drawSubWindow(x, y, width, height);
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28F));
+        x += gp.tileSize;
+        y += gp.tileSize;
+
+        for (String line : message.split("\n")) {
+            g2.drawString(line, x, y);
+            y += 40;
+        }
+
+    }
+
+    public void drawSubWindow(int x, int y, int width, int height) {
+
+        Color c = new Color(0, 0, 0, 210);
+        g2.setColor(c);
+        g2.fillRoundRect(x, y, width, height,35, 35);
+
+        c = new Color(255, 255, 255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
+
+    }
+
     public int getXforCenteredText(String text) {
         
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
