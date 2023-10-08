@@ -30,11 +30,7 @@ public class TileManager {
     public void getTileImage() {
 
             setup(0, "Floor1_Tile", false);
-            setup(1, "FloorEdge1_Tile", true);
-            setup(2, "FloorEdge2_Tile", true);
-            setup(3, "FloorEdge1_Tile", true);
-            setup(4, "Balcony1_Tile", true);
-
+            setup(1, "Balcony1_Tile", true);
     }
 
     public void setup(int index, String imageName, boolean collision) {
