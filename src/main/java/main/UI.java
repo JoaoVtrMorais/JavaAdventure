@@ -77,7 +77,7 @@ public class UI {
         // DRAW PLAYER'S PORTRAIT
         g2.drawImage(portrait_empty, x, y, null);
 
-        x = 95;
+        x = 115;
         y = 35;
         int i = 0;
 
@@ -90,7 +90,7 @@ public class UI {
 
         // RESET
 
-        x = 95;
+        x = 115;
         y = 35;
         i = 0;
 
