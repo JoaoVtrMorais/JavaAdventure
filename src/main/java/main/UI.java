@@ -137,15 +137,15 @@ public class UI {
             g2.drawString(text, x, y);
 
             // IMAGEM
-            x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
-            y += gp.tileSize * 2;
-            g2.drawImage(gp.player.down1, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
+            x = gp.screenWidth / 2 - 39;
+            y += gp.tileSize * 2 - 40;
+            g2.drawImage(gp.player.down1, x, y, 64, 128, null);
 
             // MENU
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
             text = "NEW GAME";
             x = getXforCenteredText(text);
-            y += gp.tileSize * 3.5;
+            y += gp.tileSize * 3.5 + 40;
             g2.drawString(text, x, y);
             if(commandNum == 0) {
                 g2.drawString(">", x - gp.tileSize, y);
