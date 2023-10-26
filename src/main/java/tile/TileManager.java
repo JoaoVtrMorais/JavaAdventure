@@ -29,11 +29,11 @@ public class TileManager {
     
     public void getTileImage() {
 
-            setup(0, "Floor1_Tile", false);
-            setup(1, "Balcony1_Tile", true);
+            importImg(0, "Floor1_Tile", false);
+            importImg(1, "Balcony1_Tile", true);
     }
 
-    public void setup(int index, String imageName, boolean collision) {
+    public void importImg(int index, String imageName, boolean collision) {
 
         UtilityTool uTool = new UtilityTool();
 

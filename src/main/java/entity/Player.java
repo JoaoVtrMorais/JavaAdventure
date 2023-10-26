@@ -49,15 +49,24 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
+        img = importImg("/player/character.png");
 
-        up1 = setup("/player/CharacterUp_1");
-        up2 = setup("/player/CharacterUp_2");
-        down1 = setup("/player/CharacterDown_1");
-        down2 = setup("/player/CharacterDown_2");
-        left1 = setup("/player/CharacterLeft_1");
-        left2 = setup("/player/CharacterLeft_2");
-        right1 = setup("/player/CharacterRight_1");
-        right2 = setup("/player/CharacterRight_2");
+        up1 = img.getSubimage(0, 64, 16, 32);
+        up2 = img.getSubimage(16, 64, 16, 32);
+        up3 = img.getSubimage(32, 64, 16, 32);
+        up4 = img.getSubimage(48, 64, 16, 32);
+        down1 = img.getSubimage(0, 0, 16, 32);
+        down2 = img.getSubimage(16, 0, 16, 32);
+        down3 = img.getSubimage(32, 0, 16, 32);
+        down4 = img.getSubimage(48, 0, 16, 32);
+        left1 = img.getSubimage(0, 96, 16, 32);
+        left2 = img.getSubimage(16, 96, 16, 32);
+        left3 = img.getSubimage(32, 96, 16, 32);
+        left4 = img.getSubimage(48, 96, 16, 32);
+        right1 = img.getSubimage(0, 32, 16, 32);
+        right2 = img.getSubimage(16, 32, 16, 32);
+        right3 = img.getSubimage(32, 32, 16, 32);
+        right4 = img.getSubimage(48, 32, 16, 32);
 
     }
 
@@ -177,4 +186,6 @@ public class Player extends Entity {
         g2.drawImage(image, screenX, screenY, null);
 
     }
+
+
 }
