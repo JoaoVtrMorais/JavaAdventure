@@ -119,6 +119,10 @@ public class Player extends Entity {
                 if (spriteNum == 1) {
                     spriteNum = 2;
                 } else if (spriteNum == 2) {
+                    spriteNum = 3;
+                } else if (spriteNum == 3) {
+                    spriteNum = 4;
+                } else if (spriteNum == 4) {
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
@@ -157,6 +161,12 @@ public class Player extends Entity {
                 if (spriteNum == 2) {
                     image = up2;
                 }
+                if (spriteNum == 3) {
+                    image = up3;
+                }
+                if (spriteNum == 4) {
+                    image = up4;
+                }
                 break;
             case "down":
                 if (spriteNum == 1) {
@@ -164,6 +174,12 @@ public class Player extends Entity {
                 }
                 if (spriteNum == 2) {
                     image = down2;
+                }
+                if (spriteNum == 3) {
+                    image = down3;
+                }
+                if (spriteNum == 4) {
+                    image = down4;
                 }
                 break;
             case "left":
@@ -173,12 +189,25 @@ public class Player extends Entity {
                 if (spriteNum == 2) {
                     image = left2;
                 }
+                if (spriteNum == 3) {
+                    image = left3;
+                }
+                if (spriteNum == 4) {
+                    image = left4;
+                }
                 break;
             case "right":
                 if (spriteNum == 1) {
                     image = right1;
-                } else if (spriteNum == 2) {
+                }
+                if (spriteNum == 2) {
                     image = right2;
+                }
+                if (spriteNum == 3) {
+                    image = right3;
+                }
+                if (spriteNum == 4) {
+                    image = right4;
                 }
                 break;
         }
