@@ -29,8 +29,8 @@ public class TileManager {
     
     public void getTileImage() {
 
-            importImg(0, "Floor1_Tile", false);
-            importImg(1, "Balcony1_Tile", true);
+            importImg(0, "/tiles/Floor1_Tile.png", false);
+            importImg(1, "/tiles/Balcony1_Tile.png", true);
     }
 
     public void importImg(int index, String imageName, boolean collision) {
@@ -39,7 +39,7 @@ public class TileManager {
 
         try {
             tile[index] = new Tile();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imageName +".png"));
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream(imageName));
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
         } catch (IOException e) {

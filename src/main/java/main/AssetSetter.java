@@ -13,9 +13,6 @@ public class AssetSetter {
     }
     
     public void setObject() {
-        gp.obj[0] = new OBJ_CoffeeBasic(gp);
-        gp.obj[0].worldX = gp.tileSize * 4;
-        gp.obj[0].worldY = gp.tileSize * 4;
     }
 
     public void setNPC() {

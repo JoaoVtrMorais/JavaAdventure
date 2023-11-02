@@ -212,7 +212,7 @@ public class Player extends Entity {
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, null);
+        g2.drawImage(image, screenX, screenY, 32, 64, null);
 
     }
 

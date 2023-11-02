@@ -18,7 +18,8 @@ public class Entity {
     public String direction = "down";
     public int spriteCounter = 0;
     public int spriteNum = 1;
-    public Rectangle solidArea = new Rectangle(0, 0, 48,48);
+    public Rectangle solidArea = new Rectangle(0, 0, 32,64);
+    
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
     public int actionLockCounter = 0;
@@ -164,7 +165,7 @@ public class Entity {
                     break;
             }
 
-            g2.drawImage(image, screenX, screenY, null);
+            g2.drawImage(image, screenX, screenY, 32, 64, null);
 
         }
     }
