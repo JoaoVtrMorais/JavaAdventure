@@ -29,18 +29,20 @@ public class TileManager {
     
     public void getTileImage() {
 
-            importImg(0, "/tiles/Floor1_Tile.png", false);
-            importImg(1, "/tiles/Balcony1_Tile.png", true);
+            importImg(0, 0, 0, false);
+            importImg(1, 48, 112, true);
     }
 
-    public void importImg(int index, String path, boolean collision) {
-
+    public void importImg(int index, int x, int y, boolean collision) {
+        InputStream is = getClass().getResourceAsStream("/teste/Overworld.png");
         UtilityTool uTool = new UtilityTool();
-        InputStream is = getClass().getResourceAsStream(path);
+
 
         try {
+            BufferedImage image = ImageIO.read(is);
+
             tile[index] = new Tile();
-            tile[index].image = ImageIO.read(is);
+            tile[index].image = image.getSubimage(x, y, 16, 16);
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
         } catch (IOException e) {
