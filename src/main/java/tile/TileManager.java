@@ -33,13 +33,14 @@ public class TileManager {
             importImg(1, "/tiles/Balcony1_Tile.png", true);
     }
 
-    public void importImg(int index, String imageName, boolean collision) {
+    public void importImg(int index, String path, boolean collision) {
 
         UtilityTool uTool = new UtilityTool();
+        InputStream is = getClass().getResourceAsStream(path);
 
         try {
             tile[index] = new Tile();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream(imageName));
+            tile[index].image = ImageIO.read(is);
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
         } catch (IOException e) {

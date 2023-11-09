@@ -36,9 +36,9 @@ public class UI {
         Entity heart = new OBJ_Heart(gp);
         Entity portrait = new OBJ_Portrait(gp);
         portrait_empty = portrait.image;
-        heart_full = heart.image;
-        heart_half = heart.image2;
-        heart_blank = heart.image3;
+        heart_full = heart.image2;
+        heart_half = heart.image3;
+        heart_blank = heart.image4;
     }
     
     public void draw(Graphics2D g2) {
@@ -83,7 +83,7 @@ public class UI {
 
         // DRAW MAX HEART
         while (i < gp.player.maxLife/2) {
-            g2.drawImage(heart_blank, x, y, null);
+            g2.drawImage(heart_blank, x, y, 48, 48, null);
             i++;
             x += gp.tileSize;
         }
@@ -96,10 +96,10 @@ public class UI {
 
         // DRAW CURRENT LIFE
         while (i < gp.player.life) {
-            g2.drawImage(heart_half, x, y, null);
+            g2.drawImage(heart_half, x, y, 48, 48, null);
             i++;
             if(i < gp.player.life) {
-                g2.drawImage(heart_full, x, y, null);
+                g2.drawImage(heart_full, x, y, 48, 48, null);
             }
             i++;
             x += gp.tileSize;
