@@ -31,6 +31,14 @@ public class TileManager {
 
             importImg(0, 0, 0, false);
             importImg(1, 48, 112, true);
+            importImg(2, 48, 96, true);
+            importImg(3, 32, 112, true);
+            importImg(4, 64, 112, true);
+            importImg(5, 48, 128, true);
+            importImg(6, 32, 144, true);
+            importImg(7, 48, 144, true);
+            importImg(8, 32, 160, true);
+            importImg(9, 48, 160, true);
     }
 
     public void importImg(int index, int x, int y, boolean collision) {
