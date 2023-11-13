@@ -12,27 +12,34 @@ import java.io.InputStream;
 public class Entity {
 
     GamePanel gp;
-    public int worldX, worldY;
-    public int speed;
-    public BufferedImage img, up1, up2, up3, up4, down1, down2, down3, down4, left1, left2, left3, left4, right1, right2, right3, right4;
-    public String direction = "down";
-    public int spriteCounter = 0;
-    public int spriteNum = 1;
-    public Rectangle solidArea = new Rectangle(0, 0, 32,64);
-    
-    public int solidAreaDefaultX, solidAreaDefaultY;
-    public boolean collisionOn = false;
-    public int actionLockCounter = 0;
-    public boolean invincible = false;
-    public int invincibleCounter = 0;
-    String dialogues[] = new String[20];
-    int dialogueIndex = 0;
-    public BufferedImage image, image2, image3, image4;
-    public String name;
-    public boolean collision = false;
-    public int type; // 0 = player, 1 = npc, 2 = monster
 
-    // CHARACTER STATUS
+    public BufferedImage img, up1, up2, up3, up4, down1, down2, down3, down4,
+            left1, left2, left3, left4, right1, right2, right3, right4;
+    public BufferedImage attackUp1, attackUp2, attackUp3, attackUp4, attackDown1, attackDown2, attackDown3, attackDown4,
+            attackLeft1, attackLeft2, attackLeft3, attackLeft4, attackRight1, attackRight2, attackRight3, attackRight4;
+    public BufferedImage image, image2, image3, image4;
+    public Rectangle solidArea = new Rectangle(0, 0, 32,64);
+    public int solidAreaDefaultX, solidAreaDefaultY;
+    public boolean collision = false;
+    String dialogues[] = new String[20];
+
+    // STATE
+    public int worldX, worldY;
+    public String direction = "down";
+    public int spriteNum = 1;
+    int dialogueIndex = 0;
+    public boolean collisionOn = false;
+    public boolean invincible = false;
+
+    // COUNTER
+    public int spriteCounter = 0;
+    public int actionLockCounter = 0;
+    public int invincibleCounter = 0;
+
+    // CHARACTER ATTRIBUTES
+    public int type; // 0 = player, 1 = npc, 2 = monster
+    public String name;
+    public int speed;
     public int maxLife;
     public int life;
 
