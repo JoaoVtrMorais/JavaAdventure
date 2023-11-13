@@ -104,17 +104,6 @@ public class UI {
             i++;
             x += gp.tileSize;
         }
-//
-//            if (gp.player.life == 3) {
-//                g2.drawImage(vitality_full, x, y, null);
-//            } else if (gp.player.life == 2) {
-//                g2.drawImage(vitality_half, x, y, null);
-//            } else if (gp.player.life == 1) {
-//                g2.drawImage(vitality_low, x, y, null);
-//            } else if (gp.player.life == 0) {
-//                g2.drawImage(no_vitality, x, y, null);
-//            }
-//        }
     }
 
     public void drawTitleScreen() {

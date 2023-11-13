@@ -98,6 +98,10 @@ public class Player extends Entity {
             int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
             interactNPC(npcIndex);
 
+            // VERIFICA COLISÃO COM MONSTRO
+            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+            contactMonster(monsterIndex);
+
             // VERIFICA EVENTO
             gp.eHandler.checkEvent();
 
@@ -128,6 +132,14 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
         }
+
+        if (invincible == true) {
+            invincibleCounter++;
+            if (invincibleCounter > 60) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
     }
     
     public void pickUpObject(int i) {
@@ -142,6 +154,15 @@ public class Player extends Entity {
             if (gp.keyH.enterPressed == true) {
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
+            }
+        }
+    }
+
+    public void contactMonster(int i) {
+        if (i != 999) {
+            if (invincible == false) {
+                life -= 1;
+                invincible = true;
             }
         }
     }
@@ -212,9 +233,18 @@ public class Player extends Entity {
                 break;
         }
 
+        if (invincible == true) {
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+        }
+
         g2.drawImage(image, screenX, screenY, 32, 64, null);
 
+        // Reset alpha
+
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+
+        // g2.setFont(new Font("Roboto", Font.PLAIN, 26));
+        // g2.setColor(Color.white);
+        // g2.drawString("Invincible: " + invincibleCounter, 10, 400);
     }
-
-
 }
