@@ -55,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);
     public Entity obj[] = new Entity[10];
     public Entity npc[] = new Entity[10];
-    public Entity monster[] = new Entity[20];
+    public Entity enemy[] = new Entity[20];
     ArrayList<Entity> entityList = new ArrayList<>();
     
     public GamePanel() {
@@ -71,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         aSetter.setObject();
         aSetter.setNPC();
-        aSetter.setMonster();
+        aSetter.setEnemy();
         //playMusic(0);
         gameState = titleState;
     }
@@ -127,11 +127,17 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
-            // MONSTER
+            // ENEMY
 
-            for (int i = 0; i < monster.length; i++) {
-                if (monster[i] != null) {
-                    monster[i].update();
+            for (int i = 0; i < enemy.length; i++) {
+                if (enemy[i] != null) {
+                    if (enemy[i].alive == true && enemy[i].dying == false) {
+                        enemy[i].update();
+                    }
+                    if (enemy[i].alive == false) {
+                        enemy[i] = null;
+                    }
+
                 }
             }
         }
@@ -174,9 +180,9 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
-            for (int i = 0; i < monster.length; i++) {
-                if (monster[i] != null) {
-                    entityList.add(monster[i]);
+            for (int i = 0; i < enemy.length; i++) {
+                if (enemy[i] != null) {
+                    entityList.add(enemy[i]);
                 }
             }
 
@@ -223,7 +229,7 @@ public class GamePanel extends JPanel implements Runnable {
         music.stop();
     }
 
-    public void playerSE(int i) {
+    public void playSE(int i) {
 
         se.setFile(i);
         //se.play();

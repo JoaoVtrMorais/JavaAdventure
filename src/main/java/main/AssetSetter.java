@@ -1,9 +1,7 @@
 package main;
 
 import entity.NPC_1;
-import monster.MON_skull;
-import object.Coin;
-import object.OBJ_CoffeeBasic;
+import enemy.ENEMY_Slime;
 
 public class AssetSetter {
     
@@ -17,14 +15,31 @@ public class AssetSetter {
     }
 
     public void setNPC() {
-        gp.npc[0] = new NPC_1(gp);
-        gp.npc[0].worldX = gp.tileSize * 10;
-        gp.npc[0].worldY = gp.tileSize * 7;
+        //gp.npc[0] = new NPC_1(gp);
+        //gp.npc[0].worldX = gp.tileSize * 10;
+        //gp.npc[0].worldY = gp.tileSize * 7;
     }
 
-    public void setMonster() {
-        gp.monster[0] = new MON_skull(gp);
-        gp.monster[0].worldX = gp.tileSize * 15;
-        gp.monster[0].worldY = gp.tileSize * 10;
+    public void setEnemy() {
+        gp.enemy[0] = new ENEMY_Slime(gp);
+        gp.enemy[0].worldX = gp.tileSize * 15;
+        gp.enemy[0].worldY = gp.tileSize * 10;
+
+        gp.enemy[1] = new ENEMY_Slime(gp);
+        gp.enemy[1].worldX = gp.tileSize * 16;
+        gp.enemy[1].worldY = gp.tileSize * 11;
+
+        gp.enemy[2] = new ENEMY_Slime(gp);
+        gp.enemy[2].worldX = gp.tileSize * 12;
+        gp.enemy[2].worldY = gp.tileSize * 10;
+
+        gp.enemy[3] = new ENEMY_Slime(gp);
+        gp.enemy[3].worldX = gp.tileSize * 14;
+        gp.enemy[3].worldY = gp.tileSize * 15;
+
+        gp.enemy[4] = new ENEMY_Slime(gp);
+        gp.enemy[4].worldX = gp.tileSize * 17;
+        gp.enemy[4].worldY = gp.tileSize * 11;
+
     }
 }

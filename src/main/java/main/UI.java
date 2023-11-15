@@ -34,8 +34,8 @@ public class UI {
 
         // CREATE HUD OBJECT
         Entity heart = new OBJ_Heart(gp);
-        Entity portrait = new OBJ_Portrait(gp);
-        portrait_empty = portrait.image;
+        //Entity portrait = new OBJ_Portrait(gp);
+        //portrait_empty = portrait.image;
         heart_full = heart.image2;
         heart_half = heart.image3;
         heart_blank = heart.image4;
@@ -75,7 +75,7 @@ public class UI {
         int y = 25;
 
         // DRAW PLAYER'S PORTRAIT
-        g2.drawImage(portrait_empty, x, y, null);
+        //g2.drawImage(portrait_empty, x, y, null);
 
         x = 115;
         y = 35;
@@ -128,7 +128,7 @@ public class UI {
             // IMAGEM
             x = gp.screenWidth / 2 - 39;
             y += gp.tileSize * 2 - 40;
-            g2.drawImage(gp.player.down1, x, y, 64, 128, null);
+            g2.drawImage(gp.player.down1, x, y, 128, 128, null);
 
             // MENU
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));

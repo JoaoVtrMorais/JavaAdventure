@@ -14,8 +14,8 @@ public class OBJ_Portrait extends Entity {
         
         UtilityTool uTool = new UtilityTool();
         
-        name = "Portrait";
-        image = setup("/objects/PlayerPortrait_UI");
-        image = uTool.scaleImage(image, gp.tileSize * 2, gp.tileSize * 2);
+        //name = "Portrait";
+        //image = setup("/objects/PlayerPortrait_UI");
+        //image = uTool.scaleImage(image, gp.tileSize * 2, gp.tileSize * 2);
     }
 }
