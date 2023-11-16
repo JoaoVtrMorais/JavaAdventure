@@ -12,7 +12,7 @@ import java.io.InputStream;
 public class UI {
     GamePanel gp;
     Graphics2D g2;
-    Font maruMonica;
+    public Font maruMonica;
     BufferedImage portrait_empty, heart_full, heart_half, heart_blank;
     public boolean messageOn = false;
     public String message = "";
@@ -75,6 +75,8 @@ public class UI {
         // GAME OVER STATE
         if (gp.gameState == gp.gameOverState) drawGameOverScreen();
 
+        // THANKS STATE
+        if (gp.gameState == gp.thanksState) drawThanksState();
     }
 
     public void drawPlayerHud() {
@@ -122,7 +124,7 @@ public class UI {
 
             // NOME DO JOGO
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 85));
-            String text = "Java Coffee Shop";
+            String text = "Java Adventure";
             int x = getXforCenteredText(text);
             int y = gp.tileSize * 3;
 
@@ -133,10 +135,17 @@ public class UI {
             g2.setColor(Color.white);
             g2.drawString(text, x, y);
 
-            // IMAGEM
-            x = gp.screenWidth / 2 - 39;
-            y += gp.tileSize * 2 - 40;
-            g2.drawImage(gp.player.down1, x, y, 128, 128, null);
+            // VERSÃO
+            g2.setFont(g2.getFont().deriveFont(25f));
+            text = "Version 0.1";
+            x = 600;
+            y += gp.tileSize;
+            // SOMBRA
+            g2.setColor(Color.gray);
+            g2.drawString(text, x, y);
+            // COR PRINCIPAL
+            g2.setColor(Color.white);
+            g2.drawString(text, x - 2, y - 2);
 
             // MENU
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
@@ -237,6 +246,41 @@ public class UI {
         g2.drawString(text, x, y);
         if (commandNum == 1) {
             g2.drawString(">", x - 40, y);
+        }
+    }
+
+    public void drawThanksState() {
+        g2.setColor(new Color(0, 0, 0));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        int x, y;
+        String text;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110f));
+
+        text = "Thanks for playing!";
+
+        // Shadow
+        g2.setColor(new Color(0, 72, 7));
+        x = getXforCenteredText(text);
+        y = gp.tileSize * 4;
+        g2.drawString(text, x, y);
+
+        // Main
+        g2.setColor(new Color(0, 143, 29));
+        g2.drawString(text, x - 4, y - 4);
+
+        // Back to the title screen
+        g2.setFont(g2.getFont().deriveFont(50f));
+        g2.setColor(Color.white);
+        text = "Quit";
+        x = getXforCenteredText(text);
+        y += gp.tileSize * 4;
+        g2.drawString(text, x, y);
+        if (commandNum == 0) {
+            g2.drawString(">", x - 40, y);
+            if (gp.keyH.enterPressed) {
+                subState = 0;
+            }
         }
     }
 

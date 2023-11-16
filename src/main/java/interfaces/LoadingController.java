@@ -47,21 +47,6 @@ public class LoadingController implements Initializable {
         task.setOnSucceeded(ev->{
             myLabel.setText("Carregado");
             myProgressBar.getScene().getWindow().hide();
-            JFrame window = new JFrame();
-            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            window.setResizable(false);
-            window.setTitle("Java Coffee Shop");
-
-            var gamePanel = new GamePanel();
-            window.add(gamePanel);
-
-            window.pack();
-
-            window.setLocationRelativeTo(null);
-            window.setVisible(true);
-
-            gamePanel.setupGame();
-            gamePanel.startGameThread();
         });
     }
 }

@@ -3,6 +3,7 @@ package enemy;
 import entity.Entity;
 import main.GamePanel;
 
+import java.awt.*;
 import java.util.Random;
 
 public class ENEMY_Slime extends Entity {

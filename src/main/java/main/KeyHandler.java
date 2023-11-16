@@ -103,6 +103,9 @@ public class KeyHandler implements KeyListener {
 
         // GAME OVER STATE
         else if (gp.gameState == gp.gameOverState) gameOverState(code);
+
+        // THANKS STATE
+        else if (gp.gameState == gp.thanksState) thanksState(code);
     }
 
     public void optionState(int code) {
@@ -187,7 +190,15 @@ public class KeyHandler implements KeyListener {
                 gp.restart();
             }
         }
+    }
 
+    public void thanksState(int code) {
+        if (code == KeyEvent.VK_ENTER) {
+            if (gp.ui.commandNum == 0) {
+                gp.gameState = gp.titleState;
+                gp.restart();
+            }
+        }
     }
 
     @Override

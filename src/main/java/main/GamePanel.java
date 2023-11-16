@@ -49,6 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
     public EventHandler eHandler = new EventHandler(this);
     Config config = new Config(this);
     Thread gameThread;
+    int kills = 0;
     
     // ESTADO DO JOGO
     public int gameState;
@@ -58,6 +59,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int dialogueState = 3;
     public final int optionsState = 5;
     public final int gameOverState = 6;
+    public final int thanksState = 7;
 
     // ENTIDADE E OBJETO
     public Player player = new Player(this, keyH);
@@ -105,6 +107,7 @@ public class GamePanel extends JPanel implements Runnable {
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setEnemy();
+        kills = 0;
     }
 
     public void setFullScreen() {
@@ -180,6 +183,7 @@ public class GamePanel extends JPanel implements Runnable {
                     }
                     if (enemy[i].alive == false) {
                         enemy[i] = null;
+                        kills++;
                     }
 
                 }
@@ -187,6 +191,11 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (gameState == pauseState) {
           // nothing
+        }
+
+        if (kills == 5) {
+            gameState = thanksState;
+            kills = 0;
         }
         
     }
