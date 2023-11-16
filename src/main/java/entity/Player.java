@@ -48,6 +48,18 @@ public class Player extends Entity {
         life = maxLife;
     }
 
+    public void setDefaultPositions() {
+        worldX = gp.tileSize * 15;
+        worldY = gp.tileSize * 13;
+        direction = "down";
+    }
+
+    public void restoreLife() {
+
+        life = maxLife;
+        invincible = false;
+    }
+
     public void getPlayerImage() {
         img = importImg("/player/Character_Run.png");
         img2 = importImg2("/player/Character_Run2.png");
@@ -187,6 +199,12 @@ public class Player extends Entity {
                 invincibleCounter = 0;
             }
         }
+
+        if (life <= 0) {
+            gp.gameState = gp.gameOverState;
+            //gp.playSE(12);
+        }
+
     }
 
     public void attacking() {
