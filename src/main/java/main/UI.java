@@ -157,51 +157,7 @@ public class UI {
             if(commandNum == 2) {
                 g2.drawString(">", x - gp.tileSize, y);
             }
-        } else if (titleScreenState == 1) {
-
-            // TELA DE CRIAÇÃO DE PERSONAGEM
-            g2.setColor(Color.white);
-            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 50F));
-
-            String text = "Selecione seu barista!";
-            int x = getXforCenteredText(text);
-            int y = gp.tileSize * 3;
-            g2.drawString(text, x, y);
-
-            text = "Barista Teste 1";
-            x = getXforCenteredText(text);
-            y += gp.tileSize * 3;
-            g2.drawString(text, x, y);
-            if (commandNum == 0) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
-            text = "Barista Teste 2";
-            x = getXforCenteredText(text);
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-            if (commandNum == 1) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
-            text = "Barista Teste 3";
-            x = getXforCenteredText(text);
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-            if (commandNum == 2) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
-            text = "Back";
-            x = getXforCenteredText(text);
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-            if (commandNum == 3) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
         }
-
     }
 
     public void drawPauseScreen() {
