@@ -1,33 +1,10 @@
 package interfaces;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import ConectaBD.User;
 
-import javax.swing.*;
-import java.io.IOException;
 import java.sql.*;
 
 public class Controller  {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-
-    @FXML
-    private TextField email;
-
-    @FXML
-    private PasswordField password;
-
-    @FXML
-    private Button loginButton;
 
     String email1;
     String senha;
@@ -72,30 +49,30 @@ public class Controller  {
         return user;
     }
 
-    public void login(ActionEvent event) throws IOException {
+    //public void login(ActionEvent event) throws IOException {
 
-        email1 = email.getText();
-        senha = password.getText();
+      //  email1 = email.getText();
+      //  senha = password.getText();
 
-        user = getAuthenticatedUser(email1, senha);
+//        user = getAuthenticatedUser(email1, senha);
+//
+//        if (user != null) {
+//            System.out.println("Logado com sucesso.");
+//            System.out.println("E-mail: " + user.email);
+//            System.out.println("Username: " + user.username);
+//            System.out.println("Password: " + user.senha);
+//
+//            root = FXMLLoader.load(getClass().getResource("/telas/loading.fxml"));
+//            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//            scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+//
+//        } else {
+//            JOptionPane.showMessageDialog(null,
+//                                "E-mail ou senha inválida.",
+//                                "Tente de novo!", JOptionPane.ERROR_MESSAGE);
+//        }
 
-        if (user != null) {
-            System.out.println("Logado com sucesso.");
-            System.out.println("E-mail: " + user.email);
-            System.out.println("Username: " + user.username);
-            System.out.println("Password: " + user.senha);
-
-            root = FXMLLoader.load(getClass().getResource("/telas/loading.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } else {
-            JOptionPane.showMessageDialog(null,
-                                "E-mail ou senha inválida.",
-                                "Tente de novo!", JOptionPane.ERROR_MESSAGE);
-        }
-
-    }
+    //}
 }

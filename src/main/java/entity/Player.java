@@ -61,8 +61,8 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
-        img = importImg("/player/Character_Run.png");
-        img2 = importImg2("/player/Character_Run2.png");
+        img = importImg("/Character_Run.png");
+        img2 = importImg2("/Character_Run2.png");
 
         down1 = img.getSubimage(0, 0, 16, 16);
         down2 = img.getSubimage(16, 0, 16, 16);
@@ -93,9 +93,9 @@ public class Player extends Entity {
 
     public void getPlayerAttackImage() {
 
-        img = importImg("/player/Character_AttackSword1.png");
+        img = importImg("/Character_AttackSword1.png");
 
-        img2 = importImg2("/player/Character_AttackSword2.png");
+        img2 = importImg2("/Character_AttackSword2.png");
 
         attackDown1 = img.getSubimage(0, 0, 48, 48);
         attackDown2 = img.getSubimage(48, 0, 48, 48);

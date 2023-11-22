@@ -1,7 +1,6 @@
 package main;
 
 import entity.Entity;
-import object.OBJ_Portrait;
 import object.OBJ_Heart;
 
 import java.awt.*;
@@ -25,7 +24,7 @@ public class UI {
     public UI(GamePanel gp) {
         this.gp = gp;
         try {
-            InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
+            InputStream is = getClass().getResourceAsStream("/x12y16pxMaruMonica.ttf");
             maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
@@ -35,8 +34,6 @@ public class UI {
 
         // CREATE HUD OBJECT
         Entity heart = new OBJ_Heart(gp);
-        //Entity portrait = new OBJ_Portrait(gp);
-        //portrait_empty = portrait.image;
         heart_full = heart.image2;
         heart_half = heart.image3;
         heart_blank = heart.image4;
@@ -83,12 +80,6 @@ public class UI {
 
         int x = 25;
         int y = 25;
-
-        // DRAW PLAYER'S PORTRAIT
-        //g2.drawImage(portrait_empty, x, y, null);
-
-        x = 115;
-        y = 35;
         int i = 0;
 
         // DRAW MAX HEART
@@ -100,8 +91,8 @@ public class UI {
 
         // RESET
 
-        x = 115;
-        y = 35;
+        x = 25;
+        y = 25;
         i = 0;
 
         // DRAW CURRENT LIFE

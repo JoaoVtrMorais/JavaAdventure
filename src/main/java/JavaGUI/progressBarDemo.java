@@ -10,7 +10,7 @@ import java.io.InputStream;
 public class progressBarDemo {
 
     GamePanel gp;
-
+    public static JFrame window;
     JFrame frame = new JFrame();
     JProgressBar bar = new JProgressBar(0 , 100);
 
@@ -24,6 +24,7 @@ public class progressBarDemo {
 
         frame.getContentPane().setBackground(Color.black);
         frame.add(bar);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(960, 576);
         frame.setLayout(null);
@@ -31,6 +32,27 @@ public class progressBarDemo {
         frame.setVisible(true);
         fill();
 
+        window = new JFrame();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("Java Adventure 0.1");
+
+        GamePanel gamePanel = new GamePanel();
+        window.add(gamePanel);
+
+        //gamePanel.config.loadConfig();
+
+        if (gamePanel.fullScreenOn) {
+            window.setUndecorated(true);
+        }
+
+        window.pack();
+
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+
+        gamePanel.setupGame();
+        gamePanel.startGameThread();
     }
 
     public void fill() {
