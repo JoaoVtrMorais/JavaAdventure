@@ -3,7 +3,6 @@ package enemy;
 import entity.Entity;
 import main.GamePanel;
 
-import java.awt.*;
 import java.util.Random;
 
 public class ENEMY_Slime extends Entity {
@@ -33,8 +32,8 @@ public class ENEMY_Slime extends Entity {
 
     public void getImage() {
 
-        importImg("/enemies/Enemy_Slime/Enemy_Slime_Walk.png");
-        importImg2("/enemies/Enemy_Slime/Enemy_Slime_Walk2.png");
+        importImg("/Enemy_Slime_Walk.png");
+        importImg2("/Enemy_Slime_Walk2.png");
 
         up1 = img.getSubimage(0, 0, 16, 16);
         up2 = img.getSubimage(16, 0, 16, 16);
@@ -68,7 +67,7 @@ public class ENEMY_Slime extends Entity {
         actionLockCounter ++;
 
         if (actionLockCounter == 120) {
-            var random = new Random();
+            Random random = new Random();
             int i = random.nextInt(100)+1; // Escolhe um número de 1 a 100
 
             if (i <= 25) direction = "up";

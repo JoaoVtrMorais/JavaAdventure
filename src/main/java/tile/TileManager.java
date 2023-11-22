@@ -24,7 +24,7 @@ public class TileManager {
         tile = new Tile[10];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("/maps/map01.txt");
+        loadMap("/map01.txt");
     }
     
     public void getTileImage() {
@@ -42,7 +42,7 @@ public class TileManager {
     }
 
     public void importImg(int index, int x, int y, boolean collision) {
-        InputStream is = getClass().getResourceAsStream("/teste/Overworld.png");
+        InputStream is = getClass().getResourceAsStream("/Overworld.png");
         UtilityTool uTool = new UtilityTool();
 
 

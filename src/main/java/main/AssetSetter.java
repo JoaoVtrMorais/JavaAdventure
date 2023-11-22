@@ -1,6 +1,5 @@
 package main;
 
-import entity.NPC_1;
 import enemy.ENEMY_Slime;
 
 public class AssetSetter {
@@ -14,11 +13,7 @@ public class AssetSetter {
     public void setObject() {
     }
 
-    public void setNPC() {
-        //gp.npc[0] = new NPC_1(gp);
-        //gp.npc[0].worldX = gp.tileSize * 10;
-        //gp.npc[0].worldY = gp.tileSize * 7;
-    }
+    public void setNPC() {}
 
     public void setEnemy() {
         gp.enemy[0] = new ENEMY_Slime(gp);

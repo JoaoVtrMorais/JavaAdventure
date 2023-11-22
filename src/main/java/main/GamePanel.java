@@ -1,5 +1,6 @@
 package main;
 
+import JavaGUI.progressBarDemo;
 import entity.Entity;
 import entity.Player;
 
@@ -98,6 +99,7 @@ public class GamePanel extends JPanel implements Runnable {
         player.restoreLife();
         aSetter.setNPC();
         aSetter.setEnemy();
+        kills = 0;
     }
 
     public void restart() {
@@ -115,11 +117,11 @@ public class GamePanel extends JPanel implements Runnable {
         // ENCONTRA O TAMANHO DA TELA DO DISPOSITIVO
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice gd = ge.getDefaultScreenDevice();
-        gd.setFullScreenWindow(MainApp.window);
+        gd.setFullScreenWindow(progressBarDemo.window);
 
         // ENCONTRA A LARGURA E ALTURA TOTAL DA TELA
-        screenWidth2 = MainApp.window.getWidth();
-        screenHeight2 = MainApp.window.getHeight();
+        screenWidth2 = progressBarDemo.window.getWidth();
+        screenHeight2 = progressBarDemo.window.getHeight();
     }
 
     public void startGameThread() {

@@ -12,7 +12,7 @@ public class OBJ_Heart extends Entity {
         super(gp);
 
         name = "Heart";
-        image = importImg("/teste/objects.png");
+        image = importImg("/objects.png");
         
         image2 = img.getSubimage(64, 0, 16, 16);
         image3 = img.getSubimage(96, 0, 16, 16);
